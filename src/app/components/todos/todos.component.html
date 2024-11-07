@@ -1,0 +1,9 @@
+<p>todos works!</p>
+<h1>{{message}} 8880</h1>
+<input type="text" [(ngModel)]="todo" [value]="todo" class="form-control">
+<input [type]="inputTypeButton" (click)="showAlert()" [value]="inputTypeButton">
+<h1>{{todo}}</h1>
+
+<ul>
+    <li *ngFor="let item of data">{{ item.id }}</li>
+  </ul>
