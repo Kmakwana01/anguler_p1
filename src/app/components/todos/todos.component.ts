@@ -10,19 +10,25 @@ import axios from 'axios';
   templateUrl: './todos.component.html',
   styleUrl: './todos.component.scss'
 })
-export class TodosComponent{
+
+export class TodosComponent implements OnInit {
+  
   message: string = "welcome to todos components";
   todo: string = 'todo';
   inputTypeButton: string = "button";
   data: any;
 
-  constructor(){
-   this.showAlert()
+  constructor() {}
+  ngOnInit() {
+    this.showAlert();
   }
 
   async showAlert() {
-    const data = await axios.get('https://jsonplaceholder.typicode.com/todos')
-    console.log(data)
-    this.data = data;
+    try {
+      const response = await axios.get('https://jsonplaceholder.typicode.com/todos');
+      this.data = response.data;  // access response.data
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
   }
 }
